@@ -3,6 +3,7 @@
 #include <memory>
 #include "framework/game.h"
 #include "input/input_handler.h"
+#include "character/snake_character.h"
 
 using std::shared_ptr;
 
@@ -10,15 +11,13 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Snake Game Engine");
 	
-	sf::RectangleShape shape(sf::Vector2(20.f, 20.f));
-	shape.setFillColor(sf::Color::Green);
-
 	sf::Clock clock;
 	window.setFramerateLimit(60);
 
 	shared_ptr<game> gameInstance = std::make_shared<game>();
+	gameInstance->post_construct();
+	shared_ptr<snake_character> snake = gameInstance->get_snake_character();
 
-	
 	while (window.isOpen())
 	{
 		// Compute the frame rate
@@ -40,7 +39,7 @@ int main()
 		window.setTitle("Snake Game Engine - FPS: " + std::to_string(static_cast<int>(fps)));
 
 		window.clear();
-		window.draw(shape);
+		window.draw(snake->get_sprite());
 		window.display();
 	}
 

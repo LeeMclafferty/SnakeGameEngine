@@ -1,10 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <memory>
 
+using std::shared_ptr;
 class input_handler
 {
 public:
-	input_handler();
+	input_handler(shared_ptr<class game> inst);
 
 	void handle(sf::Event e);
 	
@@ -14,6 +16,9 @@ public:
 	void move_right();
 
 private:
+
+	shared_ptr<class game> gameInst;
+	shared_ptr<class snake_character> snake;
 	
 };
 

@@ -1,7 +1,14 @@
 #include "game.h"
 #include "../input/input_handler.h"
+#include "../character/snake_character.h"
 
 game::game()
 {
-	inputHandler = std::make_shared<input_handler>();
+
+}
+
+void game::post_construct()
+{
+	inputHandler = std::make_shared<input_handler>(shared_from_this());
+	snakeCharacter = std::make_shared<snake_character>();
 }

@@ -143,11 +143,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\character\snake_character.cpp" />
     <ClCompile Include="src\framework\game.cpp" />
     <ClCompile Include="src\input\input_handler.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\character\snake_character.h" />
     <ClInclude Include="src\framework\game.h" />
     <ClInclude Include="src\input\input_handler.h" />
   </ItemGroup>
