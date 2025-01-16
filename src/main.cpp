@@ -13,8 +13,8 @@ int main()
 	while (window.isOpen())
 	{
 		// Compute the frame rate
-		float current_time = clock.restart().asSeconds();
-		float fps = 1.0f / (current_time);
+		float delta_time = clock.restart().asSeconds();
+		float fps = 1.0f / (delta_time);
 
 		sf::Event event;
 		while (window.pollEvent(event))
