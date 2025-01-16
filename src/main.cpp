@@ -1,5 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <memory>
+#include "framework/game.h"
+#include "input/input_handler.h"
+
+using std::shared_ptr;
 
 int main()
 {
@@ -10,6 +15,10 @@ int main()
 
 	sf::Clock clock;
 	window.setFramerateLimit(60);
+
+	shared_ptr<game> gameInstance = std::make_shared<game>();
+
+	
 	while (window.isOpen())
 	{
 		// Compute the frame rate
@@ -22,22 +31,8 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			if (event.type == sf::Event::KeyPressed) {
-				if (event.key.code == sf::Keyboard::Scan::X) {
-					window.close();
-				}
-				else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-					shape.setPosition(shape.getPosition() + sf::Vector2(0.f, 5.f));
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-					shape.setPosition(shape.getPosition() + sf::Vector2(0.f, -5.f));
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-					shape.setPosition(shape.getPosition() + sf::Vector2(5.f, 0.f));
-				}
-				else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-					shape.setPosition(shape.getPosition() + sf::Vector2(-5.f, 0.f));
-				}
+			if (event.type == sf::Event::KeyPressed) {;
+				gameInstance->get_input_handler()->handle(event);
 			}
 		}
 		
