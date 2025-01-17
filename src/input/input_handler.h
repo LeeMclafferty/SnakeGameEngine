@@ -16,7 +16,6 @@ public:
 	void move_right();
 
 private:
-
 	shared_ptr<class game> gameInst;
 	shared_ptr<class snake_character> snake;
 	
