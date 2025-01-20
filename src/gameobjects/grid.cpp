@@ -11,3 +11,8 @@ void grid::set_grid_size(unsigned int w, unsigned int h)
 	grid_w = w;
 	grid_h = h;
 }
+
+void grid::post_construct()
+{
+	
+}

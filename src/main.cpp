@@ -38,7 +38,7 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 
-			if (event.type == sf::Event::KeyPressed) {;
+			if (event.type == sf::Event::KeyPressed) {
 				gameInstance->get_input_handler()->handle(event);
 			}
 
@@ -58,10 +58,6 @@ int main()
 		window.clear(sf::Color(209, 220, 59, 255));
 		window.draw(snake->get_sprite());
 		window.display();
-
-
-
-
 
 		std::cout << gameInstance->get_grid()->get_grid_size().x << std::endl; 
 	}

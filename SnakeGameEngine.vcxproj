@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\gameobjects\grid_space.cpp" />
     <ClCompile Include="src\gameobjects\grid.cpp" />
     <ClCompile Include="src\character\snake_character.cpp" />
     <ClCompile Include="src\framework\game.cpp" />
@@ -150,6 +151,7 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\gameobjects\grid_space.h" />
     <ClInclude Include="src\gameobjects\grid.h" />
     <ClInclude Include="src\character\snake_character.h" />
     <ClInclude Include="src\framework\game.h" />
