@@ -13,6 +13,7 @@ public:
 
 	void set_grid_size(unsigned int w, unsigned int h);
 	sf::Vector2i get_grid_size() { return sf::Vector2i(grid_w, grid_h); }
+	unsigned int get_grid_slot_size();
 	void post_construct();
 
 private:
@@ -21,5 +22,6 @@ private:
 
 	unsigned int grid_h;
 	unsigned int grid_w;
+	unsigned int grid_space_h;
 };
 
