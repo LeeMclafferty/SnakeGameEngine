@@ -18,5 +18,7 @@ private:
 	float sprite_height;
 	sf::Color sprite_color;
 
+	sf::Vector2i position;
+
 };
 

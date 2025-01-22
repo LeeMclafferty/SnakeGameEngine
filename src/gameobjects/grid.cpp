@@ -1,27 +1,37 @@
 #include "grid.h"
+#include "grid_space.h"
 
 grid::grid(shared_ptr<class game> inst)
-	:grid_h(800), grid_w(600), grid_space_h(20.f)
+	:gameInst(inst), grid_h(800), grid_w(600)
 {
-	gameInst = inst;
+
 }
 
 void grid::set_grid_size(unsigned int w, unsigned int h)
 {
 	grid_w = w;
 	grid_h = h;
+	populate_grid();
 }
 
-unsigned int grid::get_grid_slot_size()
+sf::Vector2i grid::get_grid_size()
 {
-	return grid_h / grid_space_h;
+	return sf::Vector2i(grid_w, grid_h);
 }
 
-void grid::post_construct()
+void grid::populate_grid()
 {
-	for (int i = 0; i <= grid_h; ++i) {
-		for (int j = 0; j <= grid_w; ++j) {
-			// Create new space.
+	play_area.clear();
+
+	const float cell_size = 20.f;
+	int rows = grid_h / cell_size;
+	int cols = grid_w / cell_size;
+
+	for (int y = 0; y < rows; ++y) {
+		std::vector<grid_space> row;
+		for (int x = 0; x < cols; ++x) {
+			row.emplace_back(x * cell_size, y * cell_size, cell_size, cell_size);
 		}
+		play_area.push_back(row);
 	}
 }
