@@ -49,7 +49,7 @@ int main()
 				window.setView(sf::View(visibleArea));
 
 				// change grid size with window size
-				gameInstance->get_grid()->set_grid_size(visibleArea.width, visibleArea.height);
+				//gameInstance->get_grid()->set_grid_size(visibleArea.width, visibleArea.height);
 			}
 		}
 

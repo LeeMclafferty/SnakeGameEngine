@@ -1,7 +1,9 @@
 #include "input_handler.h"
 #include "../framework/game.h"
 #include "../character/snake_character.h"
+#include "../gameobjects/grid.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 input_handler::input_handler(shared_ptr<game> inst)
 {
@@ -42,7 +44,12 @@ void input_handler::move_up()
 		target_grid.y * 20
 	};
 
-	snake->set_position(target_position);
+	std::cout << "Target X: " << target_grid.x << std::endl;
+	std::cout << "Target Y: " << target_grid.y << std::endl;
+
+	if (target_grid.y >= 0) {
+		snake->set_position(target_position);
+	}
 }
 
 
@@ -63,7 +70,12 @@ void input_handler::move_down()
 		target_grid.y * 20
 	};
 
-	snake->set_position(target_position);
+	//std::cout << "Target X: " << target_grid.x << std::endl;
+	//std::cout << "Target Y: " << target_grid.y << std::endl;
+
+	if (target_grid.y <= gameInst->get_grid()->row_count()) {
+		snake->set_position(target_position);
+	}
 }
 
 void input_handler::move_left()
@@ -75,6 +87,8 @@ void input_handler::move_left()
 		static_cast<int>(snake->get_position().y / 20)
 	};
 
+
+
 	sf::Vector2i target_grid = current_grid;
 	target_grid.x -= 1;
 
@@ -83,7 +97,12 @@ void input_handler::move_left()
 		target_grid.y * 20
 	};
 
-	snake->set_position(target_position);
+// 	std::cout << "Target X: " << target_grid.x << std::endl;
+// 	std::cout << "Target Y: " << target_grid.y << std::endl;
+
+	if (target_grid.x >= 0) {
+		snake->set_position(target_position);
+	}
 }
 
 void input_handler::move_right()
@@ -96,12 +115,17 @@ void input_handler::move_right()
 	};
 
 	sf::Vector2i target_grid = current_grid;
-	target_grid.x -= 1;
+	target_grid.x += 1;
 
 	sf::Vector2i target_position = {
 		target_grid.x * 20,
 		target_grid.y * 20
 	};
 
-	snake->set_position(target_position);
+// 	std::cout << "Target X: " << target_grid.x << std::endl;
+// 	std::cout << "Target Y: " << target_grid.y << std::endl;
+
+	if (target_grid.x <= gameInst->get_grid()->col_count()) {
+		snake->set_position(target_position);
+	}
 }
