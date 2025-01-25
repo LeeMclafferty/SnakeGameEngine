@@ -59,7 +59,7 @@ int main()
 		window.draw(snake->get_sprite());
 		window.display();
 
-		std::cout << gameInstance->get_grid()->get_grid_size().x << std::endl; 
+		//std::cout << gameInstance->get_grid()->get_grid_size().x << std::endl; 
 	}
 
 	return 0;

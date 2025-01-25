@@ -17,7 +17,6 @@ private:
 	shared_ptr<class grid> owning_grid;
 	sf::Vector2i position; // Top-left corner of the cell
 	float cell_width, cell_height; // Dimensions of the cell
-
 };
 
 

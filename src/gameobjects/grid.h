@@ -2,6 +2,7 @@
 #include<vector>
 #include <memory>
 #include <SFML/Graphics.hpp>
+#include "grid_space.h"
 
 using std::shared_ptr;
 
@@ -16,7 +17,7 @@ public:
 private:
 	void populate_grid();
 
-	std::vector<std::vector<class grid_space>> play_area;
+	std::vector<std::vector<grid_space>> play_area;
 	shared_ptr<class game> gameInst;
 
 	unsigned int grid_h;
