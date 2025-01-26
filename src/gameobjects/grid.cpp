@@ -1,9 +1,8 @@
 #include "grid.h"
 
 grid::grid(shared_ptr<class game> inst)
-	:gameInst(inst), gridHeight(800), gridWidth(600), cellSize(20)
+	:gameInst(inst), gridHeight(600), gridWidth(600), cellSize(20)
 {
-
 }
 
 void grid::set_grid_size(unsigned int w, unsigned int h)
@@ -38,7 +37,7 @@ void grid::populate_grid()
 	for (int y = 0; y < rows; ++y) {
 		std::vector<grid_space> row;
 		for (int x = 0; x < cols; ++x) {
-			row.emplace_back(shared_from_this(), x * cellSize, y * cellSize, cellSize, cellSize);
+			row.emplace_back(grid_space(shared_from_this(), x * cellSize, y * cellSize, cellSize, cellSize));
 		}
 		play_area.push_back(row);
 	}

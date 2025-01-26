@@ -44,8 +44,8 @@ void input_handler::move_up()
 		target_grid.y * 20
 	};
 
-	std::cout << "Target X: " << target_grid.x << std::endl;
-	std::cout << "Target Y: " << target_grid.y << std::endl;
+// 	std::cout << "Target X: " << target_grid.x << std::endl;
+// 	std::cout << "Target Y: " << target_grid.y << std::endl;
 
 	if (target_grid.y >= 0) {
 		snake->set_position(target_position);
