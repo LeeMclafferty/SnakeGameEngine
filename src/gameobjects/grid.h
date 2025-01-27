@@ -19,11 +19,17 @@ public:
 
 	const int cellSize;
 
+	void update(const sf::RenderWindow& window);
+
 private:
 	void populate_grid();
+	void init_textures();
 
 	std::vector<std::vector<grid_space>> play_area;
 	shared_ptr<class game> gameInst;
+	std::shared_ptr<grid> self;
+
+	sf::Texture grid_space_texture;
 
 	unsigned int gridHeight;
 	unsigned int gridWidth;
