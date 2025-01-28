@@ -12,7 +12,7 @@ int main()
 {
 
 	unsigned int window_w = 800;
-	unsigned int window_h = 600;
+	unsigned int window_h = 610;
 	unsigned int frame_rate = 60;
 	sf::RenderWindow window(sf::VideoMode(window_w, window_h), "Snake Game Engine");
 	window.setFramerateLimit(frame_rate);
@@ -51,8 +51,7 @@ int main()
 
 		window.setTitle("Snake Game Engine - FPS: " + std::to_string(static_cast<int>(fps)));
 
-		window.clear(sf::Color(209, 220, 59, 255));
-		window.draw(snake->get_sprite());
+		window.clear(sf::Color(sf::Color(150,150,150)));
 		gameInstance->update(window);
 		window.display();
 	}

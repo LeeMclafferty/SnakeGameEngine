@@ -23,4 +23,7 @@ void game::update(sf::RenderWindow& window)
 	if (playableGrid) {
 		playableGrid->update(window);
 	}
+	if (snakeCharacter) {
+		window.draw(snakeCharacter->get_sprite());
+	}
 }

@@ -42,7 +42,7 @@ void grid::update(sf::RenderWindow& window)
 		for (int x = 0; x < cols; ++x) {
 			grid_space& space = play_area[x][y];
 			window.draw(space.get_sprite());
-			std::cout << "Sprite Drawn at at: x - " << space.get_position().x << " y - " << space.get_position().y << std::endl;
+			//std::cout << "Sprite Drawn at at: x - " << space.get_position().x << " y - " << space.get_position().y << std::endl;
 		}
 	}
 }

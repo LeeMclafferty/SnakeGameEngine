@@ -73,7 +73,7 @@ void input_handler::move_down()
 	//std::cout << "Target X: " << target_grid.x << std::endl;
 	//std::cout << "Target Y: " << target_grid.y << std::endl;
 
-	if (target_grid.y <= gameInst->get_grid()->row_count()) {
+	if (target_grid.y <= gameInst->get_grid()->row_count() - 1) {
 		snake->set_position(target_position);
 	}
 }
@@ -125,7 +125,7 @@ void input_handler::move_right()
 // 	std::cout << "Target X: " << target_grid.x << std::endl;
 // 	std::cout << "Target Y: " << target_grid.y << std::endl;
 
-	if (target_grid.x <= gameInst->get_grid()->col_count()) {
+	if (target_grid.x <= gameInst->get_grid()->col_count() - 1) {
 		snake->set_position(target_position);
 	}
 }
