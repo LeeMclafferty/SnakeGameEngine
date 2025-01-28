@@ -19,7 +19,7 @@ public:
 
 	const int cellSize;
 
-	void update(const sf::RenderWindow& window);
+	void update(sf::RenderWindow& window);
 
 private:
 	void populate_grid();

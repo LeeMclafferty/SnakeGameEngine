@@ -18,7 +18,9 @@ void game::post_construct()
 	}
 }
 
-void game::update()
+void game::update(sf::RenderWindow& window)
 {
-
+	if (playableGrid) {
+		playableGrid->update(window);
+	}
 }

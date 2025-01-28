@@ -44,12 +44,8 @@ int main()
 
 			if (event.type == sf::Event::Resized)
 			{
-				// update the view to the new size of the window
 				sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
 				window.setView(sf::View(visibleArea));
-
-				// change grid size with window size
-				//gameInstance->get_grid()->set_grid_size(visibleArea.width, visibleArea.height);
 			}
 		}
 
@@ -57,9 +53,8 @@ int main()
 
 		window.clear(sf::Color(209, 220, 59, 255));
 		window.draw(snake->get_sprite());
+		gameInstance->update(window);
 		window.display();
-
-		//std::cout << gameInstance->get_grid()->get_grid_size().x << std::endl; 
 	}
 
 	return 0;

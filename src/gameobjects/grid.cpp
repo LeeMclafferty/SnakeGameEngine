@@ -32,7 +32,7 @@ int grid::col_count()
 	return gridWidth / cellSize;
 }
 
-void grid::update(const sf::RenderWindow& window)
+void grid::update(sf::RenderWindow& window)
 {
 	int rows = row_count();
 	int cols = col_count();
@@ -40,7 +40,9 @@ void grid::update(const sf::RenderWindow& window)
 	// Loop over all spaces and draw.
 	for (int y = 0; y < rows; ++y) {
 		for (int x = 0; x < cols; ++x) {
-			window.draw(play_area[x][y].get_sprite());
+			grid_space& space = play_area[x][y];
+			window.draw(space.get_sprite());
+			std::cout << "Sprite Drawn at at: x - " << space.get_position().x << " y - " << space.get_position().y << std::endl;
 		}
 	}
 }
@@ -58,6 +60,7 @@ void grid::populate_grid()
 		for (int x = 0; x < cols; ++x) {
 			grid_space space(shared_from_this(), x * cellSize, y * cellSize, cellSize, 
 				cellSize, grid_space_texture);
+			//std::cout << "Space Created at: x - " << x * cellSize << " y - " << y * cellSize << std::endl;
 			row.emplace_back(space);
 		}
 		play_area.push_back(row);
