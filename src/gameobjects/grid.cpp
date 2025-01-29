@@ -37,19 +37,23 @@ void grid::update(sf::RenderWindow& window)
 {
 	int rows = row_count();
 	int cols = col_count();
-	sf::Vector2i mousePos = get_random_grid_pos();
+
 
 	// Loop over all spaces and draw.
 	for (int y = 0; y < rows; ++y) {
 		for (int x = 0; x < cols; ++x) {
-			if (x == mousePos.x && y == mousePos.y) {
-				spawn_mouse(mousePos, window);
-				continue;
-			}
 			grid_space& space = play_area[x][y];
 			window.draw(space.get_sprite());
 		}
 	}
+	
+	// If there is no mouse, create a new one.
+	if (!mouse) {
+		sf::Vector2i mousePos = get_random_grid_pos();
+		spawn_mouse(mousePos, window);
+	}
+
+	window.draw(*mouse);
 }
 
 void grid::populate_grid()
@@ -98,8 +102,7 @@ void grid::spawn_mouse(sf::Vector2i pos, sf::RenderWindow& window)
 		mouse = std::make_shared<sf::Sprite>(sf::Sprite());
 		if (mouse) {
 			mouse->setTexture(mouse_texture);
-			mouse->setPosition(pos.x, pos.y);
-			window.draw(*mouse);
+			mouse->setPosition(pos.x * cellSize, pos.y * cellSize);
 		}
 	}
 }
