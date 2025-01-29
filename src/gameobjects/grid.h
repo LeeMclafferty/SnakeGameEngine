@@ -24,12 +24,16 @@ public:
 private:
 	void populate_grid();
 	void init_textures();
+	void spawn_mouse(sf::Vector2i pos, sf::RenderWindow& window);
+	sf::Vector2i get_random_grid_pos();
 
 	std::vector<std::vector<grid_space>> play_area;
 	shared_ptr<class game> gameInst;
-	std::shared_ptr<grid> self;
+	shared_ptr<grid> self;
+	shared_ptr<sf::Sprite> mouse;
 
 	sf::Texture grid_space_texture;
+	sf::Texture mouse_texture;
 
 	unsigned int gridHeight;
 	unsigned int gridWidth;
