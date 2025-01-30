@@ -26,6 +26,8 @@ private:
 	void init_textures();
 	void spawn_mouse(sf::Vector2i pos, sf::RenderWindow& window);
 	sf::Vector2i get_random_grid_pos();
+	void update_grid(sf::RenderWindow& window);
+	void update_mouse(sf::RenderWindow& window);
 
 	std::vector<std::vector<grid_space>> play_area;
 	shared_ptr<class game> gameInst;
