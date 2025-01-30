@@ -1,4 +1,6 @@
 #include "grid.h"
+#include "../character/snake_character.h"
+#include "../framework/game.h"
 #include <iostream>
 #include <filesystem>
 #include <random>
@@ -51,6 +53,14 @@ void grid::update(sf::RenderWindow& window)
 	if (!mouse) {
 		sf::Vector2i mousePos = get_random_grid_pos();
 		spawn_mouse(mousePos, window);
+	}
+	else {
+		shared_ptr<snake_character> snakeChar = gameInst->get_snake_character();
+		if (mouse->getPosition().x  == snakeChar->get_position().x 
+			&& mouse->getPosition().y == snakeChar->get_position().y) {
+			std::cout << "Mouse hit!" << std::endl;
+		}
+
 	}
 
 	window.draw(*mouse);

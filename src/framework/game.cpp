@@ -2,8 +2,10 @@
 #include "../input/input_handler.h"
 #include "../character/snake_character.h"
 #include "../gameobjects/grid.h"
+#include <iostream>
 
 game::game()
+	:score(0)
 {
 
 }
@@ -25,5 +27,11 @@ void game::update(sf::RenderWindow& window)
 	}
 	if (snakeCharacter) {
 		window.draw(snakeCharacter->get_sprite());
+		//std::cout << "Snake x: " << snakeCharacter->get_position().x << " Snake y: " << snakeCharacter->get_position().y<<  std::endl;
 	}
+}
+
+void game::increase_score(int inc)
+{
+	score += inc;
 }

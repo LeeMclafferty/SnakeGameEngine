@@ -15,9 +15,13 @@ public:
 	shared_ptr<class snake_character> get_snake_character() { return snakeCharacter; }
 	shared_ptr<class grid> get_grid() { return playableGrid; }
 
+	void increase_score(int inc);
+
 private:
 	shared_ptr<class input_handler> inputHandler;
 	shared_ptr<class snake_character> snakeCharacter;
 	shared_ptr<class grid> playableGrid;
+	
+	int score;
 };
 
