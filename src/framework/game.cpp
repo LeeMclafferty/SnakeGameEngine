@@ -2,6 +2,7 @@
 #include "../input/input_handler.h"
 #include "../character/snake_character.h"
 #include "../gameobjects/grid.h"
+#include "../ui/UI.h"
 #include <iostream>
 
 game::game()
@@ -18,6 +19,11 @@ void game::post_construct()
 	if (playableGrid) {
 		playableGrid->set_grid_size(600, 600);
 	}
+
+	gameUI = std::make_shared<ui>(shared_from_this());
+	if (gameUI) {
+		gameUI->load_font();
+	}
 }
 
 void game::update(sf::RenderWindow& window)
@@ -27,7 +33,9 @@ void game::update(sf::RenderWindow& window)
 	}
 	if (snakeCharacter) {
 		window.draw(snakeCharacter->get_sprite());
-		//std::cout << "Snake x: " << snakeCharacter->get_position().x << " Snake y: " << snakeCharacter->get_position().y<<  std::endl;
+	}
+	if (gameUI) {
+		window.draw(gameUI->get_score_text());
 	}
 }
 

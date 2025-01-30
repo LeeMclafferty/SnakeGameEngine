@@ -78,7 +78,7 @@ void grid::init_textures()
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
 
-	std::cout << "Texture loaded successfully." << std::endl;
+	std::cout << "Textures loaded successfully!" << std::endl;
 }
 
 void grid::spawn_mouse(sf::Vector2i pos, sf::RenderWindow& window)
