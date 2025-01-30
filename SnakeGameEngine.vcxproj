@@ -149,6 +149,7 @@
     <ClCompile Include="src\framework\game.cpp" />
     <ClCompile Include="src\input\input_handler.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\ui\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gameobjects\grid_space.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="src\character\snake_character.h" />
     <ClInclude Include="src\framework\game.h" />
     <ClInclude Include="src\input\input_handler.h" />
+    <ClInclude Include="src\ui\UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

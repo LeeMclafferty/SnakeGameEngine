@@ -87,7 +87,9 @@ void grid::spawn_mouse(sf::Vector2i pos, sf::RenderWindow& window)
 		mouse = std::make_shared<sf::Sprite>(sf::Sprite());
 		if (mouse) {
 			mouse->setTexture(mouse_texture);
-			mouse->setPosition(pos.x * cellSize, pos.y * cellSize);
+			mouse->setPosition(
+				static_cast<float>(pos.x * cellSize), 
+				static_cast<float>(pos.y * cellSize));
 		}
 	}
 }
@@ -125,6 +127,8 @@ void grid::update_mouse(sf::RenderWindow& window)
 	// If there is no mouse, create a new one.
 	if (!mouse) {
 		sf::Vector2i mousePos = get_random_grid_pos();
+		// TODO: loop through all snake segments and choose a different location if 
+		// the mouse spawn location is on the snakes body. 
 		spawn_mouse(mousePos, window);
 	}
 	else {

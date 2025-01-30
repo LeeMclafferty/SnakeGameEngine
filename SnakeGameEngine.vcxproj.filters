@@ -33,6 +33,9 @@
     <ClCompile Include="src\gameobjects\grid_space.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\ui\UI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\input\input_handler.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gameobjects\grid_space.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ui\UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
