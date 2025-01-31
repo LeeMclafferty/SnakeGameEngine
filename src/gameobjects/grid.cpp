@@ -87,7 +87,7 @@ void grid::spawn_mouse(sf::Vector2i pos, sf::RenderWindow& window)
 		mouse = std::make_shared<sf::Sprite>(sf::Sprite());
 		if (mouse) {
 			mouse->setTexture(mouse_texture);
-			mouse->scale(sf::Vector2f(.90, .90));
+			mouse->scale(sf::Vector2f(.90f, .90f));
 			mouse->setPosition(
 				static_cast<float>(pos.x * cellSize), 
 				static_cast<float>(pos.y * cellSize));
@@ -138,9 +138,10 @@ void grid::update_mouse(sf::RenderWindow& window)
 		// If mouse and snake intersect, increase score, set mouse to null.
 		shared_ptr<snake_character> snakeChar = gameInst->get_snake_character();
 		if (mouse->getGlobalBounds().intersects(
-			snakeChar->get_sprite().getGlobalBounds())) {
+			snakeChar->get_head_sprite().getGlobalBounds())) {
 			gameInst->increase_score(1);
 			mouse = nullptr;
+			snakeChar->grow();
 		}
 		else
 		{

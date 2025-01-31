@@ -48,6 +48,7 @@ void input_handler::move_up()
 // 	std::cout << "Target Y: " << target_grid.y << std::endl;
 
 	if (target_grid.y >= 0) {
+		snake->set_last_position(snake->get_position());
 		snake->set_position(target_position);
 	}
 }
@@ -74,6 +75,7 @@ void input_handler::move_down()
 	//std::cout << "Target Y: " << target_grid.y << std::endl;
 
 	if (target_grid.y <= gameInst->get_grid()->row_count() - 1) {
+		snake->set_last_position(snake->get_position());
 		snake->set_position(target_position);
 	}
 }
@@ -101,6 +103,7 @@ void input_handler::move_left()
 // 	std::cout << "Target Y: " << target_grid.y << std::endl;
 
 	if (target_grid.x >= 0) {
+		snake->set_last_position(snake->get_position());
 		snake->set_position(target_position);
 	}
 }
@@ -126,6 +129,7 @@ void input_handler::move_right()
 // 	std::cout << "Target Y: " << target_grid.y << std::endl;
 
 	if (target_grid.x <= gameInst->get_grid()->col_count() - 1) {
+		snake->set_last_position(snake->get_position());
 		snake->set_position(target_position);
 	}
 }

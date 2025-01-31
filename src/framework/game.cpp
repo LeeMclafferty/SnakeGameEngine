@@ -32,7 +32,7 @@ void game::update(sf::RenderWindow& window)
 		playableGrid->update(window);
 	}
 	if (snakeCharacter) {
-		window.draw(snakeCharacter->get_sprite());
+		snakeCharacter->update(window);
 	}
 	if (gameUI) {
 		window.draw(gameUI->get_score_text());
