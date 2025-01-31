@@ -135,7 +135,7 @@ void grid::update_mouse(sf::RenderWindow& window)
 	else {
 		if (!gameInst) return;
 
-		// If mouse and snake intersect, increase score, set mouse to null.
+		// If mouse and snake intersect, increase score, set mouse to null, grow the snake.
 		shared_ptr<snake_character> snakeChar = gameInst->get_snake_character();
 		if (mouse->getGlobalBounds().intersects(
 			snakeChar->get_head_sprite().getGlobalBounds())) {
