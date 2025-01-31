@@ -39,10 +39,10 @@ void ui::update_score()
 {
 	if (!gameInst) return;
 
-	std::string scoreString = std::to_string(gameInst->get_score());
+	std::string scoreString = "\n Score: " + std::to_string(gameInst->get_score());
 	scoreText.setString(scoreString);
 	scoreText.setFont(font);
-	scoreText.setCharacterSize(50);
+	scoreText.setCharacterSize(20);
 	//scoreText.setColor(sf::Color::White);
 
 	shared_ptr<grid> gameGrid = gameInst->get_grid();

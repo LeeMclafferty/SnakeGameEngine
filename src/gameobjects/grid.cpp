@@ -87,6 +87,7 @@ void grid::spawn_mouse(sf::Vector2i pos, sf::RenderWindow& window)
 		mouse = std::make_shared<sf::Sprite>(sf::Sprite());
 		if (mouse) {
 			mouse->setTexture(mouse_texture);
+			mouse->scale(sf::Vector2f(.90, .90));
 			mouse->setPosition(
 				static_cast<float>(pos.x * cellSize), 
 				static_cast<float>(pos.y * cellSize));
