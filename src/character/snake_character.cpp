@@ -45,5 +45,7 @@ void snake_character::update(sf::RenderWindow& window)
 {
 	if (body.empty()) return;
 
-	window.draw(body[0]->get_sprite());
+	for (auto segment : body) {
+		window.draw(segment->get_sprite());
+	}
 }
