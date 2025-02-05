@@ -1,6 +1,7 @@
 #include "input_handler.h"
 #include "../framework/game.h"
 #include "../character/snake_character.h"
+#include "../character/BodySegment.h"
 #include "../gameobjects/grid.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -31,25 +32,30 @@ void input_handler::move_up()
 {
 	if (!snake) return;
 
-	sf::Vector2i current_grid = {
+	sf::Vector2i current_head_grid = {
 		static_cast<int>(snake->get_position().x / 20),
 		static_cast<int>(snake->get_position().y / 20)
 	};
 
-	sf::Vector2i target_grid = current_grid;
-	target_grid.y -= 1;
+	sf::Vector2i target_head_grid = current_head_grid;
+	target_head_grid.y -= 1;
 
-	sf::Vector2i target_position = {
-		target_grid.x * 20,
-		target_grid.y * 20
+	sf::Vector2i target_head_pos = {
+		target_head_grid.x * 20,
+		target_head_grid.y * 20
 	};
 
-// 	std::cout << "Target X: " << target_grid.x << std::endl;
-// 	std::cout << "Target Y: " << target_grid.y << std::endl;
+	if (snake->get_snake().size() > 1)
+	{
+		// Stops at 1 to avoid moving the head until loop is done. 
+		for (int i = snake->get_snake().size(); i > 0; --i) {
+			const auto& body = snake->get_snake();
+			body[i]->set_position(body[i - 1]->get_position());
+		}
+	}
 
-	if (target_grid.y >= 0) {
-		snake->set_last_position(snake->get_position());
-		snake->set_position(target_position);
+	if (target_head_grid.y >= 0) {
+		snake->get_head()->set_position(target_head_pos);
 	}
 }
 
@@ -58,25 +64,30 @@ void input_handler::move_down()
 {
 	if (!snake) return;
 
-	sf::Vector2i current_grid = {
+	sf::Vector2i current_head_grid = {
 		static_cast<int>(snake->get_position().x / 20),
 		static_cast<int>(snake->get_position().y / 20)
 	};
 
-	sf::Vector2i target_grid = current_grid;
-	target_grid.y += 1;
+	sf::Vector2i target_head_grid = current_head_grid;
+	target_head_grid.y += 1;
 
-	sf::Vector2i target_position = {
-		target_grid.x * 20,
-		target_grid.y * 20
+	sf::Vector2i target_head_pos = {
+		target_head_grid.x * 20,
+		target_head_grid.y * 20
 	};
 
-	//std::cout << "Target X: " << target_grid.x << std::endl;
-	//std::cout << "Target Y: " << target_grid.y << std::endl;
+	if (snake->get_snake().size() > 1)
+	{
+		// Stops at 1 to avoid moving the head until loop is done. 
+		for (int i = snake->get_snake().size(); i > 0; --i) {
+			const auto& body = snake->get_snake();
+			body[i]->set_position(body[i - 1]->get_position());
+		}
+	}
 
-	if (target_grid.y <= gameInst->get_grid()->row_count() - 1) {
-		snake->set_last_position(snake->get_position());
-		snake->set_position(target_position);
+	if (target_head_grid.y <= gameInst->get_grid()->row_count() - 1) {
+		snake->get_head()->set_position(target_head_pos);
 	}
 }
 
@@ -84,27 +95,30 @@ void input_handler::move_left()
 {
 	if (!snake) return;
 
-	sf::Vector2i current_grid = {
+	sf::Vector2i current_head_grid = {
 		static_cast<int>(snake->get_position().x / 20),
 		static_cast<int>(snake->get_position().y / 20)
 	};
 
+	sf::Vector2i target_head_grid = current_head_grid;
+	target_head_grid.x -= 1;
 
-
-	sf::Vector2i target_grid = current_grid;
-	target_grid.x -= 1;
-
-	sf::Vector2i target_position = {
-		target_grid.x * 20,
-		target_grid.y * 20
+	sf::Vector2i target_head_pos = {
+		target_head_grid.x * 20,
+		target_head_grid.y * 20
 	};
 
-// 	std::cout << "Target X: " << target_grid.x << std::endl;
-// 	std::cout << "Target Y: " << target_grid.y << std::endl;
+	if (snake->get_snake().size() > 1)
+	{
+		// Stops at 1 to avoid moving the head until loop is done. 
+		for (int i = snake->get_snake().size(); i > 0; --i) {
+			const auto& body = snake->get_snake();
+			body[i]->set_position(body[i - 1]->get_position());
+		}
+	}
 
-	if (target_grid.x >= 0) {
-		snake->set_last_position(snake->get_position());
-		snake->set_position(target_position);
+	if (target_head_grid.x >= 0) {
+		snake->get_head()->set_position(target_head_pos);
 	}
 }
 
@@ -112,24 +126,29 @@ void input_handler::move_right()
 {
 	if (!snake) return;
 
-	sf::Vector2i current_grid = {
+	sf::Vector2i current_head_grid = {
 		static_cast<int>(snake->get_position().x / 20),
 		static_cast<int>(snake->get_position().y / 20)
 	};
 
-	sf::Vector2i target_grid = current_grid;
-	target_grid.x += 1;
+	sf::Vector2i target_head_grid = current_head_grid;
+	target_head_grid.x += 1;
 
-	sf::Vector2i target_position = {
-		target_grid.x * 20,
-		target_grid.y * 20
+	sf::Vector2i target_head_pos = {
+		target_head_grid.x * 20,
+		target_head_grid.y * 20
 	};
 
-// 	std::cout << "Target X: " << target_grid.x << std::endl;
-// 	std::cout << "Target Y: " << target_grid.y << std::endl;
+	if (snake->get_snake().size() > 1)
+	{
+		// Stops at 1 to avoid moving the head until loop is done. 
+		for (int i = snake->get_snake().size(); i > 0; --i) {
+			const auto& body = snake->get_snake();
+			body[i]->set_position(body[i - 1]->get_position());
+		}
+	}
 
-	if (target_grid.x <= gameInst->get_grid()->col_count() - 1) {
-		snake->set_last_position(snake->get_position());
-		snake->set_position(target_position);
+	if (target_head_grid.x <= gameInst->get_grid()->col_count() - 1) {
+		snake->get_head()->set_position(target_head_pos);
 	}
 }

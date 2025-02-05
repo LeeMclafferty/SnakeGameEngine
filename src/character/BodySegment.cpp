@@ -18,4 +18,5 @@ void body_segment::set_position(sf::Vector2i p)
 {
 	lastPos = position;
 	position = p;
+	segment.setPosition(static_cast<sf::Vector2f>(p));
 }

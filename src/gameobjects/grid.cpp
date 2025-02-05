@@ -1,5 +1,7 @@
 #include "grid.h"
 #include "../character/snake_character.h"
+#include "../character/Head.h"
+#include "../character/BodySegment.h"
 #include "../framework/game.h"
 #include <iostream>
 #include <filesystem>
@@ -138,7 +140,7 @@ void grid::update_mouse(sf::RenderWindow& window)
 		// If mouse and snake intersect, increase score, set mouse to null, grow the snake.
 		shared_ptr<snake_character> snakeChar = gameInst->get_snake_character();
 		if (mouse->getGlobalBounds().intersects(
-			snakeChar->get_head_sprite().getGlobalBounds())) {
+			snakeChar->get_head()->get_sprite().getGlobalBounds())) {
 			gameInst->increase_score(1);
 			mouse = nullptr;
 			snakeChar->grow();

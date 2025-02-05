@@ -10,6 +10,14 @@ snake_character::snake_character()
 }
 
 
+sf::Vector2i snake_character::get_position()
+{
+	if (body.empty()) 
+		return sf::Vector2i(0, 0);
+
+	return body[0]->get_position();
+}
+
 shared_ptr<class body_segment> snake_character::get_head()
 {
 	if (body.empty() || !body[0]) {
@@ -22,10 +30,12 @@ void snake_character::grow()
 {
 	// TODO: create new body part, set the position to the last position of the last body
 	// segment in the vector, just use default constructor for body_segment.
-	
-// 	sf::RectangleShape bodyPart = sf::RectangleShape(sf::Vector2f(sprite_width, sprite_height));
-// 	bodyPart.setFillColor(sprite_color);
-// 	body.push_back(bodyPart);
+	shared_ptr<body_segment> lastSeg = body.back();
+	if (!lastSeg) return;
+
+	body_segment part = body_segment();
+	part.set_position(lastSeg->get_last_position());
+	body.push_back(std::make_shared<body_segment>(part));
 }
 
 void snake_character::update(sf::RenderWindow& window)
@@ -33,11 +43,4 @@ void snake_character::update(sf::RenderWindow& window)
 	if (body.empty()) return;
 
 	window.draw(body[0]->get_sprite());
-// 	sf::Vector2i lp = lastHeadPos;
-// 
-// 	for (auto segment : body) {
-// 		segment.setPosition(static_cast<float>(lastHeadPos.x),
-// 			static_cast<float>(lastHeadPos.y));
-// 		window.draw(segment);
-// 	}
 }

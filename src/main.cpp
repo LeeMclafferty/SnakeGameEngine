@@ -41,12 +41,6 @@ int main()
 			if (event.type == sf::Event::KeyPressed) {
 				gameInstance->get_input_handler()->handle(event);
 			}
-
-			if (event.type == sf::Event::Resized)
-			{
-				sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
-				window.setView(sf::View(visibleArea));
-			}
 		}
 
 		window.setTitle("Snake Game Engine - FPS: " + std::to_string(static_cast<int>(fps)));

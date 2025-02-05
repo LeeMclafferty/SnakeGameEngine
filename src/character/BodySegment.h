@@ -14,6 +14,7 @@ public:
 	float get_sprite_w() { return sprite_width; }
 	float get_sprite_h() { return sprite_height; }
 
+	// Sets the lastPos before setting the new position. 
 	void set_position(sf::Vector2i p);
 private:
 	sf::RectangleShape segment;

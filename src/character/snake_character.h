@@ -10,6 +10,8 @@ class snake_character
 public:
 	snake_character();
 
+	// Return the head's position as the snakes position.
+	sf::Vector2i get_position();
 	shared_ptr<class body_segment> get_head();
 	vector<shared_ptr<class body_segment>> get_snake() { return body; }
 
