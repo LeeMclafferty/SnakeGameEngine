@@ -1,5 +1,6 @@
 #include "snake_character.h"
 #include "BodySegment.h"
+#include <iostream>
 #include "Head.h"
 #include <memory>
 
@@ -28,10 +29,12 @@ shared_ptr<class body_segment> snake_character::get_head()
 
 void snake_character::grow()
 {
-	// TODO: create new body part, set the position to the last position of the last body
-	// segment in the vector, just use default constructor for body_segment.
+	if (body.empty()) {
+		std::cerr << "Error: Attempted to grow but no body segments exist!" << std::endl;
+		return;
+	}
+
 	shared_ptr<body_segment> lastSeg = body.back();
-	if (!lastSeg) return;
 
 	body_segment part = body_segment();
 	part.set_position(lastSeg->get_last_position());

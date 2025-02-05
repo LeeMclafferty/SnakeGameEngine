@@ -48,7 +48,7 @@ void input_handler::move_up()
 	if (snake->get_snake().size() > 1)
 	{
 		// Stops at 1 to avoid moving the head until loop is done. 
-		for (int i = snake->get_snake().size(); i > 0; --i) {
+		for (int i = snake->get_snake().size() - 1; i > 0; --i) {
 			const auto& body = snake->get_snake();
 			body[i]->set_position(body[i - 1]->get_position());
 		}
@@ -80,7 +80,7 @@ void input_handler::move_down()
 	if (snake->get_snake().size() > 1)
 	{
 		// Stops at 1 to avoid moving the head until loop is done. 
-		for (int i = snake->get_snake().size(); i > 0; --i) {
+		for (int i = snake->get_snake().size() - 1; i > 0; --i) {
 			const auto& body = snake->get_snake();
 			body[i]->set_position(body[i - 1]->get_position());
 		}
@@ -111,7 +111,7 @@ void input_handler::move_left()
 	if (snake->get_snake().size() > 1)
 	{
 		// Stops at 1 to avoid moving the head until loop is done. 
-		for (int i = snake->get_snake().size(); i > 0; --i) {
+		for (int i = snake->get_snake().size() - 1; i > 0; --i) {
 			const auto& body = snake->get_snake();
 			body[i]->set_position(body[i - 1]->get_position());
 		}
@@ -142,7 +142,7 @@ void input_handler::move_right()
 	if (snake->get_snake().size() > 1)
 	{
 		// Stops at 1 to avoid moving the head until loop is done. 
-		for (int i = snake->get_snake().size(); i > 0; --i) {
+		for (int i = snake->get_snake().size() - 1; i > 0; --i) {
 			const auto& body = snake->get_snake();
 			body[i]->set_position(body[i - 1]->get_position());
 		}
