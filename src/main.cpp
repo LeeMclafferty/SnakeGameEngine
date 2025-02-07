@@ -18,6 +18,8 @@ int main()
 	window.setFramerateLimit(frame_rate);
 	
 	sf::Clock clock;
+	sf::Clock moveClock;
+	const float moveInterval = 0.1f;
 
 	shared_ptr<game> gameInstance = std::make_shared<game>();
 	gameInstance->post_construct();
@@ -29,8 +31,8 @@ int main()
 		if (!gameInstance) break;
 
 		// Compute the frame rate
-		float delta_time = clock.restart().asSeconds();
-		float fps = 1.0f / (delta_time);
+		float deltaTime = clock.restart().asSeconds();
+		float fps = 1.0f / (deltaTime);
 
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -39,7 +41,10 @@ int main()
 				window.close();
 
 			if (event.type == sf::Event::KeyPressed) {
-				gameInstance->get_input_handler()->handle(event);
+				if (moveClock.getElapsedTime().asSeconds() >= moveInterval) {
+					gameInstance->get_input_handler()->handle(event);
+					moveClock.restart();
+				}
 			}
 		}
 
