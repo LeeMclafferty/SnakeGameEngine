@@ -41,11 +41,15 @@ int main()
 				window.close();
 
 			if (event.type == sf::Event::KeyPressed) {
-				if (moveClock.getElapsedTime().asSeconds() >= moveInterval) {
-					gameInstance->get_input_handler()->handle(event);
-					moveClock.restart();
-				}
+				gameInstance->get_input_handler()->handle(event);
 			}
+		}
+
+		// Move the snake at a fixed interval
+		if (moveClock.getElapsedTime().asSeconds() >= moveInterval)
+		{
+			gameInstance->get_input_handler()->continue_dir();
+			moveClock.restart();
 		}
 
 		window.setTitle("Snake Game Engine - FPS: " + std::to_string(static_cast<int>(fps)));

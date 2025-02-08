@@ -9,22 +9,23 @@
 input_handler::input_handler(shared_ptr<game> inst)
 {
 	gameInst = inst;
+	direction = RIGHT;
 }
 
 void input_handler::handle(sf::Event e)
 {
 	snake = gameInst->get_snake_character();
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		move_down();
+		nextDir = DOWN;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		move_up();
+		nextDir = UP;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		move_right();
+		nextDir = RIGHT;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		move_left();
+		nextDir = LEFT;
 	}
 }
 
@@ -150,5 +151,28 @@ void input_handler::move_right()
 
 	if (target_head_grid.x <= gameInst->get_grid()->col_count() - 1) {
 		snake->get_head()->set_position(target_head_pos);
+	}
+}
+
+void input_handler::continue_dir()
+{
+	direction = nextDir;
+
+	switch (direction)
+	{
+	case input_handler::UP:
+		move_up();
+		break;
+	case input_handler::DOWN:
+		move_down();
+		break;
+	case input_handler::LEFT:
+		move_left();
+		break;
+	case input_handler::RIGHT:
+		move_right();
+		break;
+	default:
+		break;
 	}
 }
