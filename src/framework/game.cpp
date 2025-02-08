@@ -6,7 +6,7 @@
 #include <iostream>
 
 game::game()
-	:score(0)
+	:score(0), gameState(GameState::RUNNING)
 {
 
 }
@@ -28,6 +28,11 @@ void game::post_construct()
 
 void game::update(sf::RenderWindow& window)
 {
+	if (gameState == GameState::GAMEOVER) {
+		game_over(window);
+		return;
+	}
+
 	if (playableGrid) {
 		playableGrid->update(window);
 	}
@@ -35,11 +40,18 @@ void game::update(sf::RenderWindow& window)
 		snakeCharacter->update(window);
 	}
 	if (gameUI) {
-		window.draw(gameUI->get_score_text());
+		gameUI->update(window);
 	}
 }
 
 void game::increase_score(int inc)
 {
 	score += inc;
+}
+
+void game::game_over(sf::RenderWindow& window)
+{
+	if (gameUI) {
+		gameUI->game_over(window);
+	}
 }

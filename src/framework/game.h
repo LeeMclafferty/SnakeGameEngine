@@ -7,6 +7,13 @@ using std::shared_ptr;
 class game : public std::enable_shared_from_this<game>
 {
 public:
+	enum GameState
+	{
+		RUNNING,
+		GAMEOVER,
+		RESTART
+	};
+
 	game();
 	void post_construct();
 	void update(sf::RenderWindow& window);
@@ -18,6 +25,8 @@ public:
 	void increase_score(int inc);
 	int get_score() { return score; }
 
+	void set_game_state(GameState newState) { gameState = newState; }
+
 private:
 	shared_ptr<class input_handler> inputHandler;
 	shared_ptr<class snake_character> snakeCharacter;
@@ -25,5 +34,8 @@ private:
 	shared_ptr<class ui> gameUI;
 	
 	int score;
+	GameState gameState;
+
+	void game_over(sf::RenderWindow& window);
 };
 

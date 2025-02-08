@@ -31,7 +31,7 @@ void input_handler::handle(sf::Event e)
 
 void input_handler::move_up()
 {
-	if (!snake) return;
+	if (!snake || !gameInst) return;
 
 	sf::Vector2i current_head_grid = {
 		static_cast<int>(snake->get_position().x / 20),
@@ -58,12 +58,15 @@ void input_handler::move_up()
 	if (target_head_grid.y >= 0) {
 		snake->get_head()->set_position(target_head_pos);
 	}
+	else {
+		gameInst->set_game_state(game::GAMEOVER);
+	}
 }
 
 
 void input_handler::move_down()
 {
-	if (!snake) return;
+	if (!snake || !gameInst) return;
 
 	sf::Vector2i current_head_grid = {
 		static_cast<int>(snake->get_position().x / 20),
@@ -90,11 +93,14 @@ void input_handler::move_down()
 	if (target_head_grid.y <= gameInst->get_grid()->row_count() - 1) {
 		snake->get_head()->set_position(target_head_pos);
 	}
+	else {
+		gameInst->set_game_state(game::GAMEOVER);
+	}
 }
 
 void input_handler::move_left()
 {
-	if (!snake) return;
+	if (!snake || !gameInst) return;
 
 	sf::Vector2i current_head_grid = {
 		static_cast<int>(snake->get_position().x / 20),
@@ -121,11 +127,14 @@ void input_handler::move_left()
 	if (target_head_grid.x >= 0) {
 		snake->get_head()->set_position(target_head_pos);
 	}
+	else {
+		gameInst->set_game_state(game::GAMEOVER);
+	}
 }
 
 void input_handler::move_right()
 {
-	if (!snake) return;
+	if (!snake || !gameInst) return;
 
 	sf::Vector2i current_head_grid = {
 		static_cast<int>(snake->get_position().x / 20),
@@ -151,6 +160,9 @@ void input_handler::move_right()
 
 	if (target_head_grid.x <= gameInst->get_grid()->col_count() - 1) {
 		snake->get_head()->set_position(target_head_pos);
+	}
+	else {
+		gameInst->set_game_state(game::GAMEOVER);
 	}
 }
 
