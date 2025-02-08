@@ -17,7 +17,7 @@ void game::post_construct()
 	snakeCharacter = std::make_shared<snake_character>();
 	playableGrid = std::make_shared<grid>(shared_from_this());
 	if (playableGrid) {
-		playableGrid->set_grid_size(600, 600);
+		playableGrid->set_grid_size(300, 300);
 	}
 
 	gameUI = std::make_shared<ui>(shared_from_this());

@@ -11,8 +11,8 @@ using std::shared_ptr;
 int main()
 {
 
-	unsigned int window_w = 800;
-	unsigned int window_h = 610;
+	unsigned int window_w = 500;
+	unsigned int window_h = 310;
 	unsigned int frame_rate = 60;
 	sf::RenderWindow window(sf::VideoMode(window_w, window_h), "Snake Game Engine");
 	window.setFramerateLimit(frame_rate);

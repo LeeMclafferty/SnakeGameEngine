@@ -24,7 +24,7 @@ public:
 private:
 	void populate_grid();
 	void init_textures();
-	void spawn_mouse(sf::Vector2i pos, sf::RenderWindow& window);
+	void spawn_mouse(sf::RenderWindow& window);
 	sf::Vector2i get_random_grid_pos();
 	void update_grid(sf::RenderWindow& window);
 	void update_mouse(sf::RenderWindow& window);
