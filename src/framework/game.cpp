@@ -28,6 +28,10 @@ void game::post_construct()
 
 void game::update(sf::RenderWindow& window)
 {
+	if (gameState == GameState::RESTART) {
+		restart_game();
+	}
+
 	if (gameState == GameState::GAMEOVER) {
 		game_over(window);
 		return;
@@ -54,4 +58,11 @@ void game::game_over(sf::RenderWindow& window)
 	if (gameUI) {
 		gameUI->game_over(window);
 	}
+}
+
+void game::restart_game()
+{
+	score = 0;
+	post_construct();
+	set_game_state(GameState::RUNNING);
 }

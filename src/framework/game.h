@@ -26,6 +26,7 @@ public:
 	int get_score() { return score; }
 
 	void set_game_state(GameState newState) { gameState = newState; }
+	const GameState& get_game_state() const { return gameState; }
 
 private:
 	shared_ptr<class input_handler> inputHandler;
@@ -37,5 +38,6 @@ private:
 	GameState gameState;
 
 	void game_over(sf::RenderWindow& window);
+	void restart_game();
 };
 
