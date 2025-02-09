@@ -1,10 +1,12 @@
 #include "snake_character.h"
 #include "BodySegment.h"
-#include <iostream>
 #include "Head.h"
+#include "../framework/game.h"
+#include <iostream>
 #include <memory>
 
-snake_character::snake_character()
+snake_character::snake_character(shared_ptr<class game> inst)
+	:gameInst(inst)
 {
 	head front;
 	body.push_back(std::make_shared<class head>(front));
@@ -44,8 +46,27 @@ void snake_character::grow()
 void snake_character::update(sf::RenderWindow& window)
 {
 	if (body.empty()) return;
-
+	
+	int index = 0;
 	for (auto segment : body) {
+		// don't check for collision with the head.
+		if (index > 0) {
+			OnSelfCollide(segment);
+		}
 		window.draw(segment->get_sprite());
+		++index;
+	}
+}
+
+void snake_character::OnSelfCollide(shared_ptr<body_segment> segment)
+{
+	if (!gameInst)
+		return;
+
+	if (get_head()->get_sprite().getPosition()
+		== segment->get_sprite().getPosition()) {
+		if (gameInst) {
+			gameInst->set_game_state(game::GAMEOVER);
+		}
 	}
 }

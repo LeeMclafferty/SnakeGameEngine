@@ -8,7 +8,7 @@ using std::shared_ptr;
 class snake_character
 {
 public:
-	snake_character();
+	snake_character(shared_ptr<class game> inst);
 
 	// Return the head's position as the snakes position.
 	sf::Vector2i get_position();
@@ -20,5 +20,8 @@ public:
 
 private:
 	vector<shared_ptr<class body_segment>> body;
+	shared_ptr<class game> gameInst;
+
+	void OnSelfCollide(shared_ptr<body_segment> segment);
 };
 
