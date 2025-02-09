@@ -15,16 +15,20 @@ input_handler::input_handler(shared_ptr<game> inst)
 void input_handler::handle(sf::Event e)
 {
 	snake = gameInst->get_snake_character();
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)
+		&& direction != UP) {
 		nextDir = DOWN;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) 
+		&& direction != DOWN) {
 		nextDir = UP;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)
+		&& direction != LEFT) {
 		nextDir = RIGHT;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)
+		&& direction != RIGHT) {
 		nextDir = LEFT;
 	}
 }
