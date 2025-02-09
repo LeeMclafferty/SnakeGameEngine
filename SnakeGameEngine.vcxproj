@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\sound\SoundManager.cpp" />
     <ClCompile Include="src\character\BodySegment.cpp" />
     <ClCompile Include="src\character\Head.cpp" />
     <ClCompile Include="src\gameobjects\grid_space.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="src\ui\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\sound\SoundManager.h" />
     <ClInclude Include="src\character\BodySegment.h" />
     <ClInclude Include="src\character\Head.h" />
     <ClInclude Include="src\gameobjects\grid_space.h" />

@@ -33,6 +33,7 @@ private:
 	shared_ptr<class snake_character> snakeCharacter;
 	shared_ptr<class grid> playableGrid;
 	shared_ptr<class ui> gameUI;
+	shared_ptr<class sound_manager> soundManager;
 	
 	int score;
 	GameState gameState;

@@ -3,6 +3,7 @@
 #include "../character/snake_character.h"
 #include "../gameobjects/grid.h"
 #include "../ui/UI.h"
+#include "../sound/SoundManager.h"
 #include <iostream>
 
 game::game()
@@ -23,6 +24,11 @@ void game::post_construct()
 	gameUI = std::make_shared<ui>(shared_from_this());
 	if (gameUI) {
 		gameUI->load_font();
+	}
+
+	soundManager = std::make_shared<sound_manager>(shared_from_this());
+	if (soundManager) {
+		soundManager->play_music("Assets/the_snake_game.mp3");
 	}
 }
 
