@@ -21,6 +21,8 @@ void input_handler::handle(sf::Event e)
 	if (!snake)
 		return;
 
+	snake->play_beep();
+
 	if (gameInst->get_game_state() == game::GameState::RUNNING) {
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)

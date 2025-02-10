@@ -6,7 +6,7 @@
 #include <memory>
 
 snake_character::snake_character(shared_ptr<class game> inst)
-	:gameInst(inst)
+	:gameInst(inst), soundManager(sound_manager(inst))
 {
 	head front;
 	body.push_back(std::make_shared<class head>(front));
@@ -36,6 +36,7 @@ void snake_character::grow()
 		return;
 	}
 
+	play_chomp();
 	shared_ptr<body_segment> lastSeg = body.back();
 
 	body_segment part = body_segment();
@@ -56,6 +57,16 @@ void snake_character::update(sf::RenderWindow& window)
 		window.draw(segment->get_sprite());
 		++index;
 	}
+}
+
+void snake_character::play_beep()
+{
+	soundManager.play_sound("Assets/arcade_beep.mp3", beepBuffer, beepSound);
+}
+
+void snake_character::play_chomp()
+{
+	soundManager.play_sound("Assets/chomp.mp3", chompBuffer, chompSound);
 }
 
 void snake_character::OnSelfCollide(shared_ptr<body_segment> segment)
